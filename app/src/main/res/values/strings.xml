@@ -14,4 +14,5 @@
     <string name="title_activity_tweet_list">TweetListActivity</string>
     <string name="no_tweet_found">No Tweet Found</string>
     <string name="title_activity_tweet_detail">TweetDetailActivity</string>
+    <string name="title_activity_check_edit">CheckEditActivity</string>
 </resources>

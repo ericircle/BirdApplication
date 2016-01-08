@@ -1,60 +1,44 @@
 package com.example.circle.birdapplication;
 
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
-
-    // Button _loginBtn;
+public class CheckEditActivity extends AppCompatActivity {
+    Button _btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_check_edit);
 
-        /*
-        _loginBtn = (Button) findViewById(R.id.btn_login);
-        _loginBtn.setOnClickListener(new View.OnClickListener() {
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+
+        TextView textView = (TextView) findViewById(R.id.check_text);
+        textView.setText(message);
+
+        _btn = (Button) findViewById(R.id.btn);
+        _btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CheckEditActivity.class);
+                Intent intent = new Intent(CheckEditActivity.this, TweetListActivity.class);
                 startActivity(intent);
             }
         });
-        */
     }
-
-    public void sendInfo (View view) {
-        Intent intent = new Intent(this, CheckEditActivity.class);
-
-        EditText username = (EditText) findViewById(R.id.fld_username);
-        EditText password = (EditText) findViewById(R.id.fld_pwd);
-
-        StringBuilder sb = new StringBuilder("Username is ");
-        sb.append(username.getText().toString());
-        sb.append(". Password is ");
-        sb.append(password.getText().toString());
-        sb.append(".");
-        String s = sb.toString();
-
-        intent.putExtra(EXTRA_MESSAGE, s);
-
-        startActivity(intent);
-    }
-
-    // public, private, protected; final; static;
-    public final static String EXTRA_MESSAGE = "com.example.circle.birdapplication";
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_check_edit, menu);
         return true;
     }
 
